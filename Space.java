@@ -46,7 +46,16 @@ public class Space extends World
             addObject(new Asteroid(), x, y);
         }
     }
-    
+    private void paintStars(int count)
+    {
+        int x = Greenfoot.getRandomNumber(getWidth()/2);
+        int y = Greenfoot.getRandomNumber(getHeight()/2);
+        int d = Greenfoot.getRandomNumber(225);
+        Color random = new Color(d, d, d);
+        GreenfootImage background =getBackground();
+        background.setColor(random);
+        background.fillOval(x, y, 2, 2);
+    }
     /**
      * This method is called when the game is over to display the final score.
      */
