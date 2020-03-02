@@ -25,6 +25,7 @@ public class Rocket extends SmoothMover
     {
         reloadDelayCount = 5;
         addToVelocity(new Vector(getRotation(), .7));
+        
     }
 
     /**
@@ -36,8 +37,17 @@ public class Rocket extends SmoothMover
         checkKeys();
         reloadDelayCount++;
         move();
+        checkCollision();
     }
-    
+    public void checkCollision()
+{
+        if( getOneIntersectingObject(Asteroid.class) != null)
+    {
+        World world = getWorld();
+        world.addObject(new Explosion(),getX(),getY());
+        world.removeObject(this);
+    }    
+}
     /**
      * Check whether there are any key pressed and react to them.
      */
